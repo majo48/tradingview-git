@@ -8,15 +8,23 @@ Policy for Queries:
 """
 import sys
 from Cooky import Cooky
+from Timer import Timer
 
-# main
+# main ===
 c = Cooky()
 cookies = c.get_cookies()
 if cookies is None:
     print('Please open Chrome Browser and login to tradingview.com.')
     sys.exit(1) # error
-
 print(cookies)
+
+t = Timer()
+OK = t.check_timelapse()
+if not OK:
+    print('Please wait a bit longer for the next query to tradingview.com.')
+    sys.exit(2) # error
+
+print('Add query here.')
 
 # ====
 # Close script
